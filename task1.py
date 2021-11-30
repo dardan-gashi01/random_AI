@@ -25,12 +25,62 @@ for y in range(Gridsize):
 #showing the grid to the user
 plt.show()
 
-#function for task1a so Dijkstra
+# print(grid[0, 0+1])
+#  = move right
+ 
+# print([grid[0+1, 0]])
+# =move down
+
 def shortestPath1(graph, start, end):
+   
+    current = start
+    x,y = 0,0
+    path = []
+    path.append(current)
+    print(current)
     
+    #if ((x>0 or y>0) and x+1< len(graph) and y+1<len(graph)):
     
+    while x != Gridsize-1 or y != Gridsize-1:
+        if x+1 < graph.shape[0]:
+            if y+1 < graph.shape[1]:
+                if (graph[y,x+1] > graph[y+1,x]):
+                    print(grid[y+1, x])
+                    print("down")
+                    current = grid[y+1,x]
+                    y+=1
+                    print(y)
+                    path.append(current)
+                    print(path)
+                else:
+                    print(grid[y,x+1])
+                    print("right")
+                    current = grid[y,x+1]
+                    x+=1
+                    print(x)
+                    path.append(current)
+                    print(path)
+            else:
+                print(grid[y,x+1])
+                print("right")
+                current = grid[y,x+1]
+                x+=1
+                print(x)
+                path.append(current)
+                print(path)
+        else:
+            print(grid[y+1,x])
+            print("down")
+            current = grid[y+1,x]
+            y+=1
+            print(y)
+            path.append(current)
+            print(path)
+            
+            
+        
 
 
     
-    
+     
 shortestPath1(grid, grid[0,0], grid[Gridsize-1,Gridsize-1])
