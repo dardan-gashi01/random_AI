@@ -39,31 +39,69 @@ def shortestPath1(graph, start, end):
     path.append((x,y))
     print(current)
     
+    #map of unvisited nodes to know what we have and have not visited
     unvisited = np.zeros((Gridsize,Gridsize),dtype=bool)
+    #making a map of infinities to be able to track the shortest path 
     dist=np.ones((Gridsize,Gridsize),dtype=int)*np.Infinity
     #making the starting point 0
     dist[0,0] = 0
     visited = []
-    print(unvisited)
+    #print(unvisited)
     
     #print(visited)
     complete = False
+    count = 0
     
     
-    # while not complete:
+    while x != Gridsize-1 and y != Gridsize -1:
     #to look to the right if we have any neighbours there
-    if x < Gridsize -1:
-        print(x+1, y)
-    #to look to the left if we have any neighbours there
-    if x > 0:
-        print(x-1,y)
-    #to look down to see if we have any neighbours there
-    if y < Gridsize -1:
-        print(x,y+1)
-    if y > 0:
-        print(x,y-1)        
+        if x < Gridsize -1:
+            print('value of right node is: ' + str(graph[y, x+1]))
+            print('coordinate of the right node is : '+ str(x+1) +',' +str(y))
+            count += 1
+            print(count)
+            x+=1
+            # if dist[y,x+1]>graph[y,x+1]+dist[y,x] and not unvisited[y,x+1]:
+            #     dist[y,x+1]=graph[y,x+1]+dist[y,x]
+            #     print(dist)
+                #complete = True
+        #to look to the left if we have any neighbours there
+        if x > 0:
+            print('value of the left node is: '+ str(graph[y,x-1]))
+            print('coordinate of the left node is : '+ str(x-1) +',' +str(y))
+            count += 1
+            print(count)
+            x-=1
+            # if dist[y,x-1]>graph[y,x-1]+dist[y,x] and not unvisited[y,x-1]:
+            #     dist[y,x-1]=graph[y,x-1]+dist[y,x]
+            #     print(dist)
+                #complete = True
+        #to look down to see if we have any neighbours there
+        if y < Gridsize -1:
+            print('value of the down node is: '+ str(graph[y+1,x]))
+            print('coordinate of the down node is : '+ str(x) +',' +str(y+1))
+            count += 1
+            print(count)
+            y+=1
+            # if dist[y+1,x]>graph[y+1,x]+dist[y,x] and not unvisited[y+1,x]:
+            #     dist[y+1,x]=graph[y+1,x]+dist[y,x]
+            #     print(dist)
+                #complete = True
+        if y > 0:
+            print('value of the above node is: '+ str(graph[y-1,x]))
+            print('coordinate of the above node is : '+ str(x) +',' +str(y-1)) 
+            count += 1
+            print(count)
+            y-=1
+            # if dist[y-1,x]>graph[y-1,x]+dist[y,x] and not unvisited[y-1,x]:
+            #     dist[y-1,x]=graph[y-1,x]+dist[y,x]
+            #     print(dist)
+                #complete = True
+        unvisited[x,y]=True
+        #print(unvisited)
+                
         
-    
+        
     #while (len(visited) < GridSize):
         
     #while not complete:
